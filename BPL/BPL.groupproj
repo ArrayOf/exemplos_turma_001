@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{238CFD45-FA9B-477B-9724-8405B4932484}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Executavel\mor.fachada.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="CNAB\mor.cnab.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="CNAB_XPTO\mor.cnab.xpto.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="mor_fachada">
+			<MSBuild Projects="Executavel\mor.fachada.dproj"/>
+		</Target>
+		<Target Name="mor_fachada:Clean">
+			<MSBuild Projects="Executavel\mor.fachada.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="mor_fachada:Make">
+			<MSBuild Projects="Executavel\mor.fachada.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="mor_cnab">
+			<MSBuild Projects="CNAB\mor.cnab.dproj"/>
+		</Target>
+		<Target Name="mor_cnab:Clean">
+			<MSBuild Projects="CNAB\mor.cnab.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="mor_cnab:Make">
+			<MSBuild Projects="CNAB\mor.cnab.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="mor_cnab_xpto">
+			<MSBuild Projects="CNAB_XPTO\mor.cnab.xpto.dproj"/>
+		</Target>
+		<Target Name="mor_cnab_xpto:Clean">
+			<MSBuild Projects="CNAB_XPTO\mor.cnab.xpto.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="mor_cnab_xpto:Make">
+			<MSBuild Projects="CNAB_XPTO\mor.cnab.xpto.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="mor_fachada;mor_cnab;mor_cnab_xpto"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="mor_fachada:Clean;mor_cnab:Clean;mor_cnab_xpto:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="mor_fachada:Make;mor_cnab:Make;mor_cnab_xpto:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
